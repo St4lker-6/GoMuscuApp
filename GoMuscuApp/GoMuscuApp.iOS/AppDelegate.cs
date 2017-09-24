@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using GoMuscuApp.iOS.Helpers;
+using SQLite.Net.Platform.XamarinIOS;
 
 namespace GoMuscuApp.iOS
 {
@@ -23,7 +25,11 @@ namespace GoMuscuApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+
+            //string dbPath = FileAccessHelper. GetLocalFilePath("people.db3");
+
+            var platform = new SQLitePlatformIOS();
+            LoadApplication(new App(platform));
 
             return base.FinishedLaunching(app, options);
         }

@@ -4,8 +4,9 @@
              xmlns:local="clr-namespace:GoMuscuApp"
              x:Class="GoMuscuApp.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+	<Button Text="Load Page 1" 
+            Command="{Binding LoadPage1}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
 
 </ContentPage>
