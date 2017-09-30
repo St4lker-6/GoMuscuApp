@@ -9,8 +9,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
 using Xamarin.Forms;
+using GoMuscuApp.Managers;
+using GoMuscuApp.Common.Enum;
 
 namespace GoMuscuApp
 {
@@ -26,9 +29,7 @@ namespace GoMuscuApp
 
             CurrentPlatform = platform;
 
-            //var netLanguage = DependencyService.Get<ILocaleHelper>().GetCurrent();
-            //Fr.Culture = new CultureInfo(netLanguage);
-            //var t = AppResource.test2
+            LanguageManager.ListResxFile();
 
             DatabaseSeed.CheckDatabaseState();
 
