@@ -22,8 +22,6 @@ namespace GoMuscuApp.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            //string dbPath = FileAccessHelper.GetLocalFilePath("MaBase.db3");
-
             var platform = new SQLite.Net.Platform.XamarinAndroid.SQLitePlatformAndroid();
             LoadApplication(new App(platform));
         }
