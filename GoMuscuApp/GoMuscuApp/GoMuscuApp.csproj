@@ -39,30 +39,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppResources\AppResource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResource.resx</DependentUpon>
-    </Compile>
-    <Compile Include="AppResources\AppResource.en.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResource.en.resx</DependentUpon>
-    </Compile>
-    <Compile Include="AppResources\AppResource.fr.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResource.fr.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Common\Enum\LanguageEnum.cs" />
     <Compile Include="Common\SQLiteConstants.cs" />
     <Compile Include="Helpers\SQLiteHelper.cs" />
     <Compile Include="Interfaces\IFileAccessHelper.cs" />
-    <Compile Include="Interfaces\ILocaleHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Managers\LanguageManager.cs" />
     <Compile Include="Models\MVVM\CustomNotifyPropertyChanged.cs" />
     <Compile Include="Repositories\ExeciseRepository.cs" />
     <Compile Include="Repositories\MuscleGroupRepository.cs" />
@@ -81,18 +63,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AppResources\AppResource.en.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResource.en.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppResources\AppResource.fr.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResource.fr.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppResources\AppResource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -134,7 +104,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AppResources\" />
+    <Folder Include="Common\Enum\" />
+    <Folder Include="Managers\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\SessionDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

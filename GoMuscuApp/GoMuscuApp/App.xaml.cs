@@ -1,5 +1,4 @@
-﻿using GoMuscuApp.AppResources;
-using GoMuscuApp.Helpers;
+﻿using GoMuscuApp.Helpers;
 using GoMuscuApp.Interfaces;
 using GoMuscuApp.Repositories;
 using GoMuscuApp.Seed;
@@ -25,10 +24,6 @@ namespace GoMuscuApp
             InitializeComponent();
 
             CurrentPlatform = platform;
-
-            //var netLanguage = DependencyService.Get<ILocaleHelper>().GetCurrent();
-            //Fr.Culture = new CultureInfo(netLanguage);
-            //var t = AppResource.test2
 
             DatabaseSeed.CheckDatabaseState();
 
