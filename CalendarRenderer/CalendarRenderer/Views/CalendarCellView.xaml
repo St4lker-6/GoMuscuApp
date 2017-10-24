@@ -2,18 +2,38 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CalendarRenderer.Views.CalendarCellView">
-  <ContentView.Content>
-      <StackLayout Orientation="Vertical">
-          
-            <!--1, 2, 3, 4-->
-            <Label Text="{Binding numberDay}" 
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"/>
+    <ContentView.Content>
 
-          <!--Monday, tuesday, wednesday ...-->
-            <Label Text="{Binding nameDay}"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"/>
-        </StackLayout>
-  </ContentView.Content>
+        <Button>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="Blue"/>
+
+                    <!--<StackLayout Orientation="Vertical">
+
+                        --><!--1, 2, 3, 4--><!--
+
+                        <Label HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding NumberDay}"/>
+
+
+                        --><!--Monday, tuesday, wednesday ...--><!--
+
+                        <Label HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding NameDay}"/>
+
+                    </StackLayout>-->
+                </Style>
+            </Button.Style>
+
+            <Button.Triggers>
+                <DataTrigger TargetType="Button" Binding="{Binding Valid}" Value="false" >
+                    <Setter Property="BackgroundColor" Value="Black"/>
+                </DataTrigger>
+            </Button.Triggers>
+
+        </Button>
+    </ContentView.Content>
 </ContentView>

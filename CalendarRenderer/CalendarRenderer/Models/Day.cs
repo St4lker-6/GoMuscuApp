@@ -8,7 +8,12 @@ namespace CalendarRenderer.Models
 {
     public class Day
     {
-        public int numberDay { get; set; }
-        public string nameDay { get; set; }
+        public int NumberDay { get; set; }
+        public string NameDay { get; set; }
+
+        /// <summary>
+        /// Invalid if the day is a day of an another month
+        /// </summary>
+        public bool Valid { get; set; }
     }
 }
