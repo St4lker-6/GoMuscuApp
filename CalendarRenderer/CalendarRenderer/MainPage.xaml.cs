@@ -45,7 +45,7 @@ namespace CalendarRenderer
             set
             {
                 _calendarDateTime = value;
-                this.NotifyPropertyChanged("CalendarDateTime");
+                this.NotifyPropertyChanged(nameof(CalendarDateTime));
             }
         }
 

@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LabelButton.cs" />
     <Compile Include="Models\DateTimeHelper.cs" />
     <Compile Include="Views\CalendarCellView.xaml.cs">
       <DependentUpon>CalendarCellView.xaml</DependentUpon>

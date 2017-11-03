@@ -1,39 +1,44 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ctrl="clr-namespace:CalendarRenderer.Controls;assembly=CalendarRenderer"
              x:Class="CalendarRenderer.Views.CalendarCellView">
+
+    <!--Hide the control on the cell when the day is not valid-->
+    <ContentView.Style>
+        <Style TargetType="ContentView">
+            <Setter Property="IsVisible" Value="True"/>
+            <Style.Triggers>
+                <DataTrigger TargetType="ContentView"  Binding="{Binding Valid}" Value="False">
+                    <Setter Property="IsVisible" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </ContentView.Style>
+    
     <ContentView.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Button>
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="BackgroundColor" Value="Blue"/>
+            <Button Grid.Row="0" Grid.RowSpan="2" 
+                    BackgroundColor="Transparent" 
+                    Command="{Binding DayClickCommand}"
+                    HorizontalOptions="Fill"/>
 
-                    <!--<StackLayout Orientation="Vertical">
-
-                        --><!--1, 2, 3, 4--><!--
-
-                        <Label HorizontalTextAlignment="Center"
+            <!--1, 2, 3, 4-->
+            <Label  Grid.Row="0" HorizontalTextAlignment="Center"  BackgroundColor="Red" VerticalOptions="Fill"
                    VerticalTextAlignment="Center"
                    Text="{Binding NumberDay}"/>
 
 
-                        --><!--Monday, tuesday, wednesday ...--><!--
-
-                        <Label HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
+            <!--Monday, tuesday, wednesday ...-->
+            <Label  Grid.Row="1" HorizontalTextAlignment="Center" BackgroundColor="Blue"
+                   VerticalTextAlignment="Center" 
                    Text="{Binding NameDay}"/>
 
-                    </StackLayout>-->
-                </Style>
-            </Button.Style>
-
-            <Button.Triggers>
-                <DataTrigger TargetType="Button" Binding="{Binding Valid}" Value="false" >
-                    <Setter Property="BackgroundColor" Value="Black"/>
-                </DataTrigger>
-            </Button.Triggers>
-
-        </Button>
+        </Grid>
     </ContentView.Content>
 </ContentView>

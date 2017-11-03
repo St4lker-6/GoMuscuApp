@@ -2,16 +2,20 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:CalendarRenderer.Views"
-             x:Class="CalendarRenderer.Views.CalendarGridView">
-   
-  <ContentView.Content>
+             x:Class="CalendarRenderer.Views.CalendarGridView" x:Name="contentView">
+
+    <ContentView.Content>
         <ListView x:Name="CalendarControl"
-              ItemsSource="{Binding Weeks}"
-              >
+              ItemsSource="{Binding Weeks}" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <!--TODO: Voir comment gérer la taille de la ligne automatiquement-->
+                                <RowDefinition Height="100"/>
+                            </Grid.RowDefinitions>
+                            
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>

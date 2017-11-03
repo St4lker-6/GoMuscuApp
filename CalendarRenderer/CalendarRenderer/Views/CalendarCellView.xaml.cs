@@ -17,6 +17,8 @@ namespace CalendarRenderer.Views
         public CalendarCellView()
         {
             InitializeComponent();
+
+  
         }
     }
 }
