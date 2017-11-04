@@ -41,7 +41,6 @@ namespace CalendarRenderer
             {
                 return _calendarDateTime;
             }
-
             set
             {
                 _calendarDateTime = value;
@@ -57,11 +56,10 @@ namespace CalendarRenderer
             {
                 return _calendarGridViewContext;
             }
-
             set
             {
                 _calendarGridViewContext = value;
-                this.NotifyPropertyChanged("CalendarGridViewContext");
+                this.NotifyPropertyChanged(nameof(CalendarGridViewContext));
             }
         }
 
@@ -72,25 +70,36 @@ namespace CalendarRenderer
 
             this.CalendarDateTime = DateTime.Now;
             this.ActualizeDisplayedDate();
-            this.CalendarGridViewContext = new CalendarGridView(this.CalendarDateTime);
+
+            this.CalendarGridViewContext = new CalendarGridView();
+            this.CalendarGridViewContext.UpdateDate(this.CalendarDateTime);
         }
+
 
         private void PreviousButtonClicked(object sender, EventArgs e)
         {
+            /// decrement and Refresh displayed date
             this.CalendarDateTime = this.CalendarDateTime.AddMonths(-1);
             this.ActualizeDisplayedDate();
+
+            /// Calculate and display the new grid
+            this.CalendarGridViewContext.UpdateDate(this.CalendarDateTime);
         }
 
         private void NextButtonClicked(object sender, EventArgs e)
         {
+            /// Increment and Refresh displayed date
             this.CalendarDateTime = this.CalendarDateTime.AddMonths(1);
             this.ActualizeDisplayedDate();
+
+            /// Calculate and display the new grid
+            this.CalendarGridViewContext.UpdateDate(this.CalendarDateTime);
         }
 
         private void ActualizeDisplayedDate()
         {
-            this.NotifyPropertyChanged("Year");
-            this.NotifyPropertyChanged("Month");
+            this.NotifyPropertyChanged(nameof(Year));
+            this.NotifyPropertyChanged(nameof(Month));
         }
 
         private void NotifyPropertyChanged(string propertyName)

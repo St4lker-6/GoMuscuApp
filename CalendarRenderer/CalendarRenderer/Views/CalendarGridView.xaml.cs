@@ -28,12 +28,10 @@ namespace CalendarRenderer.Views
             {
                 return _weeks;
             }
-
             set
             {
                 _weeks = value;
-                this.NotifyPropertyChanged("Weeks");
-
+                this.NotifyPropertyChanged(nameof(Weeks));
             }
         }
 
@@ -45,11 +43,10 @@ namespace CalendarRenderer.Views
             {
                 return _calendarDateTime;
             }
-
             set
             {
                 _calendarDateTime = value;
-                this.NotifyPropertyChanged("CalendarDateTime");
+                this.NotifyPropertyChanged(nameof(CalendarDateTime));
             }
         }
 
@@ -62,24 +59,22 @@ namespace CalendarRenderer.Views
             {
                 return _montext;
             }
-
             set
             {
                 _montext = value;
-                this.NotifyPropertyChanged("montext");
+                this.NotifyPropertyChanged(nameof(montext));
             }
         }
 
         public CalendarGridView()
         {
             InitializeComponent();
+            this.Weeks = new ObservableCollection<Week>();
         }
 
-        public CalendarGridView(DateTime calendarDateTime)
+        public void UpdateDate(DateTime newDate)
         {
-            InitializeComponent();
-
-            this.Weeks = DateTimeHelper.GetDateInformations(calendarDateTime);
+            this.Weeks = DateTimeHelper.GetDateInformations(newDate);
         }
 
 

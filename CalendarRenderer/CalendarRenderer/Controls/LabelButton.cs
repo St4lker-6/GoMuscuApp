@@ -9,14 +9,8 @@ namespace CalendarRenderer.Controls
 {
     public class LabelButton : Button
     {
-
-
-
-
         //Bindable property for the progress color
         public static readonly BindableProperty ProgressColorProperty = BindableProperty.Create("ProgressColor", typeof(string), typeof(LabelButton), defaultBindingMode: BindingMode.TwoWay);
-
-
 
         //Gets or sets the color of the progress bar
         public string ProgressColor

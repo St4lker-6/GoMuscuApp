@@ -69,23 +69,24 @@ namespace CalendarRenderer.Models
         private static int GetNumberWeekInMonth(DateTime firstOfMonth, CultureInfo cultureInfo)
         {
             var monthBegin = firstOfMonth.Month;
+            var yearBegin = firstOfMonth.Year;
             int numberWeek = 0;
-            DateTime browsingMonthDate = firstOfMonth;
-
-            while (browsingMonthDate.Month <= monthBegin)
+            DateTime browsingDate = firstOfMonth;
+            
+            /// Be carreful if the current mont is december, the next month is inferior but not the year
+            while (browsingDate.Month <= monthBegin && browsingDate.Year <= yearBegin)
             {
                 numberWeek++;
 
                 /// Next week
-                browsingMonthDate = browsingMonthDate.AddDays(7);
+                browsingDate = browsingDate.AddDays(7);
 
-                /// Stalling on the first day of week to include the last partial week
-                var dayBeforeFirstOfWeek = cultureInfo.DateTimeFormat.FirstDayOfWeek - browsingMonthDate.DayOfWeek;
-
-                if (dayBeforeFirstOfWeek > 0)
+                /// Stalling on the first day of week to include all the week even the partial week
+                var dayBeforeFirstOfWeek = cultureInfo.DateTimeFormat.FirstDayOfWeek - browsingDate.DayOfWeek;
+                if (dayBeforeFirstOfWeek != 0)
                 {
-                    /// So if the first of the week is still in the month we incremente the number of week one last time
-                    browsingMonthDate.AddDays(dayBeforeFirstOfWeek);
+                    /// The new browsing date is now fixed with the first day of the week
+                    browsingDate = browsingDate.AddDays(dayBeforeFirstOfWeek);
                 }
             }
 
