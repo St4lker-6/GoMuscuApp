@@ -6,7 +6,7 @@
 
     <ContentView.Content>
         <ListView x:Name="CalendarControl"
-              ItemsSource="{Binding Weeks}" HasUnevenRows="true">
+              ItemsSource="{Binding CurrentMonth.Weeks}" HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

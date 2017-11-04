@@ -20,18 +20,18 @@ namespace CalendarRenderer.Views
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ObservableCollection<Week> _weeks;
-        public ObservableCollection<Week> Weeks
+        private Month _currentMonth;
+        public Month CurrentMonth
         {
 
             get
             {
-                return _weeks;
+                return _currentMonth;
             }
             set
             {
-                _weeks = value;
-                this.NotifyPropertyChanged(nameof(Weeks));
+                _currentMonth = value;
+                this.NotifyPropertyChanged(nameof(CurrentMonth));
             }
         }
 
@@ -69,12 +69,11 @@ namespace CalendarRenderer.Views
         public CalendarGridView()
         {
             InitializeComponent();
-            this.Weeks = new ObservableCollection<Week>();
         }
 
         public void UpdateDate(DateTime newDate)
         {
-            this.Weeks = DateTimeHelper.GetDateInformations(newDate);
+            this.CurrentMonth = DateTimeHelper.GetDateInformations(newDate);
         }
 
 

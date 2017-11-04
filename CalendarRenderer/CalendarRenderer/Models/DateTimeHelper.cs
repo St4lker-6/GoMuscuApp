@@ -6,12 +6,11 @@ namespace CalendarRenderer.Models
 {
     public static class DateTimeHelper
     {
-        public static ObservableCollection<Week> GetDateInformations(DateTime calendarDateTime)
+        public static Month GetDateInformations(DateTime calendarDateTime)
         {
             CultureInfo cultureInfo = CultureInfo.CurrentCulture;
 
             /// Get the first of the month date time
-            //var dateBeginMonth = calendarDateTime.AddDays(1 - calendarDateTime.Date.Day);
             var firstOfMonth = new DateTime(calendarDateTime.Year, calendarDateTime.Month, 1);
 
             var currentMonth = calendarDateTime.Month;
@@ -22,7 +21,7 @@ namespace CalendarRenderer.Models
             /// Retrieve the number of week in the month (partial month)
             var weekInMonth = GetNumberWeekInMonth(firstOfMonth, cultureInfo);
 
-            var Weeks = new ObservableCollection<Week>();
+            var Month = new Month();
 
             /// The first of the month can not be a monday so we stall on the first monday of the current week 
             var dayBeforeFirstOfWeek = cultureInfo.DateTimeFormat.FirstDayOfWeek - firstOfMonth.DayOfWeek;
@@ -54,11 +53,10 @@ namespace CalendarRenderer.Models
                     }
                 }
 
-                Weeks.Add(week);
+                Month.Weeks.Add(week);
             }
 
-            return Weeks;
-
+            return Month;
         }
 
         /// <summary>

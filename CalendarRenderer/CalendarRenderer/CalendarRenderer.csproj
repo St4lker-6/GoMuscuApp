@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="Controls\LabelButton.cs" />
     <Compile Include="Models\DateTimeHelper.cs" />
+    <Compile Include="Models\Month.cs" />
     <Compile Include="Views\CalendarCellView.xaml.cs">
       <DependentUpon>CalendarCellView.xaml</DependentUpon>
     </Compile>
