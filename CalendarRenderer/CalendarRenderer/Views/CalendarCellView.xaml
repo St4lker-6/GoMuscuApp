@@ -29,14 +29,16 @@
                     HorizontalOptions="Fill"/>
 
             <!--1, 2, 3, 4-->
-            <Label  Grid.Row="0" HorizontalTextAlignment="Center"  BackgroundColor="Red" VerticalOptions="Fill"
-                   VerticalTextAlignment="Center"
+            <Label Grid.Row="0" 
+                   HorizontalTextAlignment="Center"  BackgroundColor="Red" 
+                   VerticalTextAlignment="End" 
                    Text="{Binding NumberDay}"/>
 
 
             <!--Monday, tuesday, wednesday ...-->
-            <Label  Grid.Row="1" HorizontalTextAlignment="Center" BackgroundColor="Blue"
-                   VerticalTextAlignment="Center" 
+            <Label Grid.Row="1" 
+                   HorizontalTextAlignment="Center" BackgroundColor="Blue"
+                   VerticalTextAlignment="Start" 
                    Text="{Binding NameDay}"/>
 
         </Grid>

@@ -17,30 +17,47 @@
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
-        <!--First row-->
+        <!-- ****** First row ******-->
+
+        <!--Previous button-->
         <Button Grid.Row="0" Grid.Column="0"
                 x:Name="PreviousButton"
                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                 Clicked="PreviousButtonClicked" BackgroundColor="Red"/>
 
-        <StackLayout Grid.Row="0" Grid.Column="1" BackgroundColor="Blue"
-                     Orientation="Vertical"
-                     HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Label Grid.Row="0" Grid.Column="1"
-               Text="{Binding Year}"
-               HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Label Grid.Row="0" Grid.Column="1"
-               Text="{Binding Month}"
-               HorizontalOptions="Center" VerticalOptions="Center"/>
-        </StackLayout>
+        <!--Current date button-->
+        <Grid Grid.Row="0" Grid.Column="1"
+               BackgroundColor="Blue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
+            <Button Grid.Row="0" Grid.RowSpan="2"
+                x:Name="CurrentDateButton"
+                BackgroundColor="Violet" 
+                HorizontalOptions="Fill" VerticalOptions="Fill"
+                Clicked="CurrentDateButtonClicked"/>
+
+            <Label Grid.Row="0" 
+               Text="{Binding Year}"
+               HorizontalOptions="Center" VerticalOptions="End"/>
+            <Label Grid.Row="1" 
+               Text="{Binding Month}"
+               HorizontalOptions="Center" VerticalOptions="Start"/>
+
+        </Grid>
+
+        <!--Next button-->
         <Button Grid.Row="0" Grid.Column="2"
                 x:Name="NextButton"
                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                 Clicked="NextButtonClicked"/>
+        <!-- ************-->
 
-        <!--Second Row-->
+        <!-- ****** Second Row ******-->
         <views:CalendarGridView BackgroundColor="Green" Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="3" BindingContext="{Binding CalendarGridViewContext}"/>
+        <!-- ************-->
 
     </Grid>
 </ContentPage>

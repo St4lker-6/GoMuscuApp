@@ -86,6 +86,11 @@ namespace CalendarRenderer
             this.CalendarGridViewContext.UpdateDate(this.CalendarDateTime);
         }
 
+        private void CurrentDateButtonClicked(object sender, EventArgs e)
+        {
+
+        }
+
         private void NextButtonClicked(object sender, EventArgs e)
         {
             /// Increment and Refresh displayed date
@@ -109,5 +114,6 @@ namespace CalendarRenderer
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
     }
 }
