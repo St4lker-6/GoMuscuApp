@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ctrl="clr-namespace:CalendarRenderer.Controls;assembly=CalendarRenderer"
-             x:Class="CalendarRenderer.Views.CalendarCellView">
+             x:Class="CalendarRenderer.Views.CalendarMonthCellView">
 
     <!--Hide the control on the cell when the day is not valid-->
     <ContentView.Style>

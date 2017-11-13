@@ -12,9 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace CalendarRenderer.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CalendarCellView : ContentView
+    public partial class CalendarMonthCellView : ContentView
     {
-        public CalendarCellView()
+        public CalendarMonthCellView()
         {
             InitializeComponent();
         }

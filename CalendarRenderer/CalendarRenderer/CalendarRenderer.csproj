@@ -41,8 +41,10 @@
     <Compile Include="Controls\LabelButton.cs" />
     <Compile Include="Models\DateTimeHelper.cs" />
     <Compile Include="Models\Month.cs" />
-    <Compile Include="Views\CalendarCellView.xaml.cs">
-      <DependentUpon>CalendarCellView.xaml</DependentUpon>
+    <Compile Include="Models\NewFolder1\DisplayMode.cs" />
+    <Compile Include="Models\Year.cs" />
+    <Compile Include="Views\CalendarMonthCellView.xaml.cs">
+      <DependentUpon>CalendarMonthCellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Day.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -52,6 +54,9 @@
     <Compile Include="Models\Week.cs" />
     <Compile Include="Views\CalendarGridView.xaml.cs">
       <DependentUpon>CalendarGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CalendarYearCellView.xaml.cs">
+      <DependentUpon>CalendarYearCellView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -65,7 +70,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\CalendarCellView.xaml">
+    <EmbeddedResource Include="Views\CalendarMonthCellView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -89,6 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CalendarYearCellView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.74863\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.74863\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
