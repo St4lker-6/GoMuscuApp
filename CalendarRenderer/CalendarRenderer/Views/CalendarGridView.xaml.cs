@@ -1,4 +1,5 @@
 ﻿using CalendarRenderer.Models;
+using CalendarRenderer.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,7 +50,20 @@ namespace CalendarRenderer.Views
                 this.NotifyPropertyChanged(nameof(CalendarDateTime));
             }
         }
+        private DisplayMode _displayMode;
+        public DisplayMode DisplayMode
+        {
 
+            get
+            {
+                return _displayMode;
+            }
+            set
+            {
+                _displayMode = value;
+                this.NotifyPropertyChanged(nameof(DisplayMode));
+            }
+        }
 
         private string _montext;
         public string montext
@@ -69,6 +83,7 @@ namespace CalendarRenderer.Views
         public CalendarGridView()
         {
             InitializeComponent();
+            this.DisplayMode = (DisplayMode)1;
         }
 
         public void UpdateDate(DateTime newDate)

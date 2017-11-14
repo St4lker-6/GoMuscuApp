@@ -7,8 +7,16 @@
 
     <ContentView.Content>
         <ListView HasUnevenRows="true" 
-                  ItemsSource="{Binding CurrentMonth.Weeks}" 
-                  ItemTemplate="{StaticResource Key=DataTemplateGridMonth}">
+                  ItemsSource="{Binding CurrentMonth.Weeks}">
+
+            <ListView.Triggers>
+                <DataTrigger TargetType="ListView" Binding="{Binding DisplayMode}" Value="0">
+                    <Setter Property="ItemTemplate" Value="{StaticResource Key=DataTemplateGridMonth}"/>
+                </DataTrigger>
+                <DataTrigger TargetType="ListView" Binding="{Binding DisplayMode}" Value="1">
+                    <Setter Property="ItemTemplate" Value="{StaticResource Key=DataTemplateGridYear}"/>
+                </DataTrigger>
+            </ListView.Triggers>
 
         </ListView>
     </ContentView.Content>
