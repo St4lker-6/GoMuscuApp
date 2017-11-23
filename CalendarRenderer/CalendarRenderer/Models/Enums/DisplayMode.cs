@@ -9,7 +9,6 @@ namespace CalendarRenderer.Models.Enums
     public enum DisplayMode
     {
         MonthMode = 0,
-        YearMode = 1,
-        DecadeMode = 2
+        YearMode = 1
     }
 }

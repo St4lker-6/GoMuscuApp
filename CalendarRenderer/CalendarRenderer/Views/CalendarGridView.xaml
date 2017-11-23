@@ -6,14 +6,15 @@
              x:Class="CalendarRenderer.Views.CalendarGridView">
 
     <ContentView.Content>
-        <ListView HasUnevenRows="true" 
-                  ItemsSource="{Binding CurrentMonth.Weeks}">
+        <ListView HasUnevenRows="true">
 
             <ListView.Triggers>
                 <DataTrigger TargetType="ListView" Binding="{Binding DisplayMode}" Value="0">
+                    <Setter Property="ItemsSource" Value="{Binding CurrentMonth.Weeks}"/>
                     <Setter Property="ItemTemplate" Value="{StaticResource Key=DataTemplateGridMonth}"/>
                 </DataTrigger>
                 <DataTrigger TargetType="ListView" Binding="{Binding DisplayMode}" Value="1">
+                    <Setter Property="ItemsSource" Value="{Binding Years}"/>
                     <Setter Property="ItemTemplate" Value="{StaticResource Key=DataTemplateGridYear}"/>
                 </DataTrigger>
             </ListView.Triggers>

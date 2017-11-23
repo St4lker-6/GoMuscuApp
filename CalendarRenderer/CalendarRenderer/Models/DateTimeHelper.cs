@@ -6,9 +6,13 @@ namespace CalendarRenderer.Models
 {
     public static class DateTimeHelper
     {
-        public static Month GetDateInformations(DateTime calendarDateTime)
+        public const string monthFormat = "MMMM";
+        public const string yearFormat = "yyyy";
+
+
+        public static Month GetDateInformationsMonthMode(DateTime calendarDateTime)
         {
-            CultureInfo cultureInfo = CultureInfo.CurrentCulture;
+            CultureInfo currentCultureInfo = CultureInfo.CurrentCulture;
 
             /// Get the first of the month date time
             var firstOfMonth = new DateTime(calendarDateTime.Year, calendarDateTime.Month, 1);
@@ -19,19 +23,20 @@ namespace CalendarRenderer.Models
             var daysInMonth = DateTime.DaysInMonth(calendarDateTime.Year, calendarDateTime.Month);
 
             /// Retrieve the number of week in the month (partial month)
-            var weekInMonth = GetNumberWeekInMonth(firstOfMonth, cultureInfo);
+            var weekInMonth = GetNumberWeekInMonth(firstOfMonth, currentCultureInfo);
 
-            var Month = new Month();
 
             /// The first of the month can not be a monday so we stall on the first monday of the current week 
-            var dayBeforeFirstOfWeek = cultureInfo.DateTimeFormat.FirstDayOfWeek - firstOfMonth.DayOfWeek;
+            var dayBeforeFirstOfWeek = currentCultureInfo.DateTimeFormat.FirstDayOfWeek - firstOfMonth.DayOfWeek;
 
             if (dayBeforeFirstOfWeek > 0)
             {
                 dayBeforeFirstOfWeek = -7 + dayBeforeFirstOfWeek;
             }
 
-            var dateFirstMondayBeginMonth = firstOfMonth.AddDays(dayBeforeFirstOfWeek);
+            var browsingDate = firstOfMonth.AddDays(dayBeforeFirstOfWeek);
+
+            var Month = new Month(browsingDate.ToString("MMM"));
 
             /// Browse weeks
             for (int indexDay = 0; indexDay < weekInMonth; indexDay++)
@@ -41,15 +46,15 @@ namespace CalendarRenderer.Models
                 /// For each day in week
                 for (int indexDayInWeek = 0; indexDayInWeek < 7; indexDayInWeek++)
                 {
-                    if (dateFirstMondayBeginMonth.Month == currentMonth)
+                    if (browsingDate.Month == currentMonth)
                     {
-                        week.Days.Add(new Day { NumberDay = dateFirstMondayBeginMonth.Day, NameDay = dateFirstMondayBeginMonth.ToString("ddd"), Valid = true });
-                        dateFirstMondayBeginMonth = dateFirstMondayBeginMonth.AddDays(1);
+                        week.Days.Add(new Day { NumberDay = browsingDate.Day, NameDay = browsingDate.ToString("ddd"), Valid = true });
+                        browsingDate = browsingDate.AddDays(1);
                     }
                     else
                     {
                         week.Days.Add(new Day { Valid = false });
-                        dateFirstMondayBeginMonth = dateFirstMondayBeginMonth.AddDays(1);
+                        browsingDate = browsingDate.AddDays(1);
                     }
                 }
 
@@ -88,9 +93,32 @@ namespace CalendarRenderer.Models
                 }
             }
 
-
-
             return numberWeek;
+        }
+
+        public static ObservableCollection<Year> GetDateInformationsYearMode(DateTime calendarDateTime)
+        {
+            CultureInfo currentCultureInfo = CultureInfo.CurrentCulture;
+
+            var years = new ObservableCollection<Year>();
+            var year = new Year();
+
+            var browsingMonth = new DateTime(calendarDateTime.Year, 1, 1);
+
+            for (int indexLineMonth = 0; indexLineMonth < 3; indexLineMonth++)
+            {
+                for (int indexColumnMoth = 0; indexColumnMoth < 4; indexColumnMoth++)
+                {
+                    var month = new Month(browsingMonth.ToString("MMM"));
+                    year.Months.Add(month);
+
+                    browsingMonth = browsingMonth.AddMonths(1);
+                }
+            }
+
+            years.Add(year);
+
+            return years;
         }
     }
 }

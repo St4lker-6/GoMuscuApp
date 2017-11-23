@@ -10,9 +10,11 @@ namespace CalendarRenderer.Models
     public class Month
     {
         public ObservableCollection<Week> Weeks { get; set; }
+        public string NameMonth { get; private set; }
 
-        public Month()
+        public Month(string nameMonth)
         {
+            this.NameMonth = nameMonth;
             Weeks = new ObservableCollection<Week>();
         }
     }

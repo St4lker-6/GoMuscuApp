@@ -56,26 +56,52 @@
                         <Grid.RowDefinitions>
                             <!--TODO: Voir comment gérer la taille de la ligne automatiquement-->
                             <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
 
-                        <views:CalendarYearCellView Grid.Column="0"
-                                              BindingContext="{Binding Days[0]}"/>
+                        <views:CalendarYearCellView Grid.Row="0" Grid.Column="0"
+                                                    BindingContext="{Binding Months[0]}"/>
 
-                        <views:CalendarYearCellView Grid.Column="1"
-                                              BindingContext="{Binding Days[1]}"/>
+                        <views:CalendarYearCellView Grid.Row="0" Grid.Column="1"
+                                                    BindingContext="{Binding Months[1]}"/>
 
-                        <views:CalendarYearCellView Grid.Column="2"
-                                              BindingContext="{Binding Days[2]}"/>
+                        <views:CalendarYearCellView Grid.Row="0" Grid.Column="2"
+                                                    BindingContext="{Binding Months[2]}"/>
 
-                        <views:CalendarYearCellView Grid.Column="3"
-                                              BindingContext="{Binding Days[3]}"/>
+                        <views:CalendarYearCellView Grid.Row="0" Grid.Column="3"
+                                                    BindingContext="{Binding Months[3]}"/>
+
+                        <views:CalendarYearCellView Grid.Row="1" Grid.Column="0"
+                                                    BindingContext="{Binding Months[4]}"/>
+
+                        <views:CalendarYearCellView Grid.Row="1" Grid.Column="1"
+                                                    BindingContext="{Binding Months[5]}"/>
+
+                        <views:CalendarYearCellView Grid.Row="1" Grid.Column="2"
+                                                    BindingContext="{Binding Months[6]}"/>
+
+                        <views:CalendarYearCellView Grid.Row="1" Grid.Column="3"
+                                                    BindingContext="{Binding Months[7]}"/>
+                        
+                        <views:CalendarYearCellView Grid.Row="2" Grid.Column="0"
+                                                    BindingContext="{Binding Months[8]}"/>
+
+                        <views:CalendarYearCellView Grid.Row="2" Grid.Column="1"
+                                                    BindingContext="{Binding Months[9]}"/>
+
+                        <views:CalendarYearCellView Grid.Row="2" Grid.Column="2"
+                                                    BindingContext="{Binding Months[10]}"/>
+
+                        <views:CalendarYearCellView Grid.Row="2" Grid.Column="3"
+                                                    BindingContext="{Binding Months[11]}"/>
 
                     </Grid>
                 </ViewCell>
