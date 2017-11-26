@@ -7,6 +7,7 @@
 
 		<!-- Application resource dictionary -->
         <ResourceDictionary x:Key="AppResourceDictionary">
+
             <DataTemplate x:Key="DataTemplateGridMonth">
                 <ViewCell>
                     <Grid >
@@ -79,7 +80,7 @@
                         <views:CalendarYearCellView Grid.Row="0" Grid.Column="3"
                                                     BindingContext="{Binding Months[3]}"/>
 
-                        <views:CalendarYearCellView Grid.Row="1" Grid.Column="0"
+                        <views:CalendarYearCellView BackgroundColor="Black" Grid.Row="1" Grid.Column="0"
                                                     BindingContext="{Binding Months[4]}"/>
 
                         <views:CalendarYearCellView Grid.Row="1" Grid.Column="1"

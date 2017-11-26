@@ -1,4 +1,5 @@
 ﻿using CalendarRenderer.Models.Enums;
+using CalendarRenderer.Models.Services;
 using CalendarRenderer.ViewModels;
 using CalendarRenderer.Views;
 using System;
@@ -16,7 +17,7 @@ namespace CalendarRenderer
         public MainPage()
         {
             InitializeComponent();
-            this.BindingContext = new MainPageViewModel();
+            this.BindingContext = new MainPageViewModel(ApplicationService.Instance.EventAggregator);
         }
     }
 }

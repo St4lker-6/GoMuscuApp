@@ -3,16 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CalendarRenderer.Views.CalendarYearCellView">
   <ContentView.Content>
-        <Grid RowSpacing="0">
 
+
+        <Grid>
             <Button BackgroundColor="Transparent" 
-                    Command="{Binding DayClickCommand}"
+                    Command="{Binding MonthClickCommand}"
                     HorizontalOptions="Fill"/>
 
             <!--Month name-->
-            <Label HorizontalTextAlignment="Center"  
-                   VerticalTextAlignment="Center" 
-                   BackgroundColor="Red" 
+            <Label Margin="5"
+                   HorizontalTextAlignment="Center"  
+                   VerticalTextAlignment="Center"
                    Text="{Binding NameMonth}"/>
 
         </Grid>

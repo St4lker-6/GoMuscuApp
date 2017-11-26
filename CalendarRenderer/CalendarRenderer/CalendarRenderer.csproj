@@ -39,10 +39,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\LabelButton.cs" />
-    <Compile Include="Models\DateTimeHelper.cs" />
+    <Compile Include="Models\Events\MonthClickedEvent.cs" />
+    <Compile Include="Models\Helpers\DateTimeHelper.cs" />
     <Compile Include="Models\Events\DayClickedEvent.cs" />
     <Compile Include="Models\Month.cs" />
     <Compile Include="Models\Enums\DisplayMode.cs" />
+    <Compile Include="Models\Services\ApplicationService.cs" />
     <Compile Include="Models\Year.cs" />
     <Compile Include="ViewModels\CalendarGridViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />

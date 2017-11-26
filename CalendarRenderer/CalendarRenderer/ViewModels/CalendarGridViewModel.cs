@@ -1,5 +1,7 @@
 ﻿using CalendarRenderer.Models;
 using CalendarRenderer.Models.Enums;
+using CalendarRenderer.Models.Events;
+using CalendarRenderer.Models.Helpers;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
@@ -10,10 +12,13 @@ using System.Threading.Tasks;
 
 namespace CalendarRenderer.ViewModels
 {
+    /// <summary>
+    /// View model of the calendar grid view
+    /// </summary>
     public class CalendarGridViewModel : ViewModelBase
     {
         #region Fields
-        private IEventAggregator _eventAgregator;
+        private IEventAggregator _eventAggregator;
         #endregion
 
         #region Properties
@@ -28,6 +33,20 @@ namespace CalendarRenderer.ViewModels
             {
                 _years = value;
                 this.NotifyPropertyChanged(nameof(Years));
+            }
+        }
+
+        private ObservableCollection<Week> _weeks;
+        public ObservableCollection<Week> Weeks
+        {
+            get
+            {
+                return _weeks;
+            }
+            set
+            {
+                _weeks = value;
+                this.NotifyPropertyChanged(nameof(Weeks));
             }
         }
 
@@ -53,68 +72,44 @@ namespace CalendarRenderer.ViewModels
             {
                 return _displayMode;
             }
-            private set
+            set
             {
                 _displayMode = value;
                 this.NotifyPropertyChanged(nameof(DisplayMode));
             }
         }
 
-        private string _montext;
-        public string montext
-        {
-
-            get
-            {
-                return _montext;
-            }
-            set
-            {
-                _montext = value;
-                this.NotifyPropertyChanged(nameof(montext));
-            }
-        }
-
-
         #endregion
 
 
-        public CalendarGridViewModel()
+        public CalendarGridViewModel(IEventAggregator eventAggregator)
         {
             /// Set the month mode by default
-            this.DisplayMode = DisplayMode.MonthMode;
+            this.DisplayMode = DisplayMode.YearMode;
 
-            
+            _eventAggregator = eventAggregator;
         }
 
         #region Methods
+
+        /// <summary>
+        /// Load data for the selected month
+        /// </summary>
+        /// <param name="newDate"></param>
         public void LoadGridModeMonth(DateTime newDate)
         {
             this.CurrentMonth = DateTimeHelper.GetDateInformationsMonthMode(newDate);
         }
 
+        /// <summary>
+        /// Load data for the selected year
+        /// </summary>
+        /// <param name="newDate"></param>
         public void LoadGridModeYear(DateTime newDate)
         {
             this.Years = DateTimeHelper.GetDateInformationsYearMode(newDate);
         }
 
-        internal void LoadPreviousGridMode()
-        {
-            switch (this.DisplayMode)
-            {
-                case DisplayMode.MonthMode:
-                    this.DisplayMode = DisplayMode.YearMode;
-                    break;
-
-                case DisplayMode.YearMode:
-                    /// Nothing to do, last mode 
-                    break;
-
-                default:
-                    throw new NotSupportedException();
-
-            }
-        }
         #endregion
     }
 }

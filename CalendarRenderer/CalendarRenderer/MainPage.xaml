@@ -22,8 +22,7 @@
         <!--Previous button-->
         <Button Grid.Row="0" Grid.Column="0"
                 x:Name="PreviousButton"
-                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
-                BackgroundColor="Red"
+                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                 Command="{Binding PreviousButtonCommand}"/>
 
         <!--Current date button-->
@@ -36,7 +35,6 @@
 
             <Button Grid.Row="0" Grid.RowSpan="2"
                 x:Name="CurrentDateButton"
-                BackgroundColor="Violet" 
                 HorizontalOptions="Fill" VerticalOptions="Fill"
                 Command="{Binding CurrentButtonCommand}"/>
 
@@ -53,11 +51,11 @@
         <Button Grid.Row="0" Grid.Column="2"
                 x:Name="NextButton"
                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                 Command="{Binding NextButtonCommand}"/>
+                Command="{Binding NextButtonCommand}"/>
         <!-- ************-->
 
         <!-- ****** Second Row ******-->
-        <views:CalendarGridView BackgroundColor="Green" Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="3" BindingContext="{Binding CalendarGridViewModel}"/>
+        <views:CalendarGridView Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="3" BindingContext="{Binding CalendarGridViewModel}"/>
         <!-- ************-->
 
     </Grid>

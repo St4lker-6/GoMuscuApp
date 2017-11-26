@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace CalendarRenderer.ViewModels
 {
+    /// <summary>
+    /// Every view model must derived from this class for implement MVVM
+    /// </summary>
     public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

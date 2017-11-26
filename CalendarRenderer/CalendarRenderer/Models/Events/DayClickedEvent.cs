@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace CalendarRenderer.Models.Events
 {
-    public class DayClickedEvent : PubSubEvent<bool> { }
+    public class DayClickedEvent : PubSubEvent<DayClickedEventArgs> { }
 
     public class DayClickedEventArgs : EventArgs
     {
-        public DayClickedEventArgs(string message)
+        public Day ClickedDay { get; set; }
+
+        public DayClickedEventArgs(Day clickedDay)
         {
-
+            ClickedDay = clickedDay;
         }
-
     }
 }

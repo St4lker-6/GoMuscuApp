@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CalendarRenderer.Models.Enums
 {
+    /// <summary>
+    /// Use to know/change the displayed grid mode
+    /// </summary>
     public enum DisplayMode
     {
         MonthMode = 0,

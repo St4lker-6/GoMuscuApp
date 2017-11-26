@@ -30,14 +30,14 @@
 
             <!--1, 2, 3, 4-->
             <Label Grid.Row="0" 
-                   HorizontalTextAlignment="Center"  BackgroundColor="Red" 
+                   HorizontalTextAlignment="Center"
                    VerticalTextAlignment="End" 
                    Text="{Binding NumberDay}"/>
 
 
             <!--Monday, tuesday, wednesday ...-->
             <Label Grid.Row="1" 
-                   HorizontalTextAlignment="Center" BackgroundColor="Blue"
+                   HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Start" 
                    Text="{Binding NameDay}"/>
 
