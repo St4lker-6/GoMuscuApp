@@ -5,12 +5,19 @@
              x:Class="CalendarRenderer.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <!-- Application resource dictionary -->
         <ResourceDictionary x:Key="AppResourceDictionary">
-
+            <!--**** Grid month template ****-->
+            <Style x:Key="gridButtonStyle" TargetType="Button">
+                <!--Use to delete space between cell grid and button inside-->
+                <Setter Property="Margin" Value="-5,-7,-5,-7" />
+            </Style>
+            <!--******************************-->
+            
+            <!--**** Grid month template ****--> 
             <DataTemplate x:Key="DataTemplateGridMonth">
-                <ViewCell>
-                    <Grid >
+                <ViewCell >
+                    <Grid RowSpacing="1" ColumnSpacing="1">
                         <Grid.RowDefinitions>
                             <!--TODO: Voir comment gérer la taille de la ligne automatiquement-->
                             <RowDefinition Height="100"/>
@@ -50,10 +57,12 @@
                     </Grid>
                 </ViewCell>
             </DataTemplate>
-
+            <!--******************************-->
+            
+            <!--**** Grid year template ****-->
             <DataTemplate x:Key="DataTemplateGridYear">
                 <ViewCell>
-                    <Grid >
+                    <Grid RowSpacing="1" ColumnSpacing="1">
                         <Grid.RowDefinitions>
                             <!--TODO: Voir comment gérer la taille de la ligne automatiquement-->
                             <RowDefinition Height="100"/>
@@ -107,7 +116,7 @@
                     </Grid>
                 </ViewCell>
             </DataTemplate>
-
+            <!--******************************-->
         </ResourceDictionary>
 
 

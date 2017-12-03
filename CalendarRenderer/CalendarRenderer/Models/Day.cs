@@ -21,6 +21,7 @@ namespace CalendarRenderer.Models
         public string NameDay { get; private set; }
         public int NumberMonth { get; private set; }
         public int Year { get; private set; }
+        public bool IsCurrentDay { get; private set; }
 
         /// <summary>
         /// Invalid if the day is a day of an another month
@@ -30,7 +31,7 @@ namespace CalendarRenderer.Models
         public ICommand DayClickCommand { get; private set; }
 
 
-        public Day(IEventAggregator eventAggregator, int numberDay, string nameDay, int numberMonth, int year, bool valid)
+        public Day(IEventAggregator eventAggregator, int numberDay, string nameDay, int numberMonth, int year, bool valid, bool isCurrentDay = false)
         {
             _eventAggregator = eventAggregator;
             this.NumberDay = numberDay;
@@ -38,6 +39,7 @@ namespace CalendarRenderer.Models
             this.NumberMonth = numberMonth;
             this.Year = year;
             this.Valid = valid;
+            this.IsCurrentDay = isCurrentDay;
 
             DayClickCommand = new Command(DayClicked);
         }

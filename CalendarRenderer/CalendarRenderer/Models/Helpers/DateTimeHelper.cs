@@ -41,7 +41,7 @@ namespace CalendarRenderer.Models.Helpers
 
             var browsingDate = firstOfMonth.AddDays(dayBeforeFirstOfWeek);
 
-            var Month = new Month(ApplicationService.Instance.EventAggregator, browsingDate.Month, browsingDate.ToString("MMM"), browsingDate.Year);
+            var Month = new Month(ApplicationService.Instance.EventAggregator, currentMonth, calendarDateTime.ToString("MMM"), calendarDateTime.Year);
 
             /// Browse weeks
             for (int indexDay = 0; indexDay < weekInMonth; indexDay++)
@@ -53,7 +53,9 @@ namespace CalendarRenderer.Models.Helpers
                 {
                     if (browsingDate.Month == currentMonth)
                     {
-                        week.Days.Add(new Day(ApplicationService.Instance.EventAggregator, browsingDate.Day, browsingDate.ToString("ddd"), browsingDate.Month, browsingDate.Year, valid:true));
+                        /// Comapre Date without hour 
+                        bool isCurrentDay = browsingDate.Date == DateTime.Now.Date;
+                        week.Days.Add(new Day(ApplicationService.Instance.EventAggregator, browsingDate.Day, browsingDate.ToString("ddd"), browsingDate.Month, browsingDate.Year, valid: true, isCurrentDay: isCurrentDay));
                         browsingDate = browsingDate.AddDays(1);
                     }
                     else
@@ -80,7 +82,7 @@ namespace CalendarRenderer.Models.Helpers
             var yearBegin = firstOfMonth.Year;
             int numberWeek = 0;
             DateTime browsingDate = firstOfMonth;
-            
+
             /// Be carreful if the current mont is december, the next month is inferior but not the year
             while (browsingDate.Month <= monthBegin && browsingDate.Year <= yearBegin)
             {
@@ -117,7 +119,9 @@ namespace CalendarRenderer.Models.Helpers
             {
                 for (int indexColumnMoth = 0; indexColumnMoth < 4; indexColumnMoth++)
                 {
-                    var month = new Month(ApplicationService.Instance.EventAggregator, browsingDate.Month, browsingDate.ToString("MMM"), browsingDate.Year);
+                    var isCurrentMonth = (browsingDate.Year == DateTime.Now.Year) && (browsingDate.Month == DateTime.Now.Month);
+                    
+                    var month = new Month(ApplicationService.Instance.EventAggregator, browsingDate.Month, browsingDate.ToString("MMM"), browsingDate.Year, isCurrentMonth);
                     year.Months.Add(month);
 
                     browsingDate = browsingDate.AddMonths(1);
@@ -127,6 +131,29 @@ namespace CalendarRenderer.Models.Helpers
             years.Add(year);
 
             return years;
+        }
+
+        /// <summary>
+        /// Return the correct date when the user is on the grid Year mode and clicked on a specific month in a specific year
+        /// </summary>
+        /// <param name="newYear"></param>
+        /// <param name="newMonth"></param>
+        /// <param name="currentDay"></param>
+        /// <returns></returns>
+        public static DateTime GetDateSwitchingToMonthMode(int newYear, int newMonth, int currentDay)
+        {
+            /// If the clicked month is february
+            if (newMonth == 2)
+            {
+                /// February month had 28 or 29 days
+                int numberDayInFebruary = DateTime.DaysInMonth(newYear, newMonth);
+                if (currentDay > numberDayInFebruary)
+                {
+                    return new DateTime(newYear, newMonth, numberDayInFebruary);
+                }
+            }
+
+            return new DateTime(newYear, newMonth, currentDay);
         }
     }
 }

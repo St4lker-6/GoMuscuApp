@@ -257,8 +257,7 @@ namespace CalendarRenderer.ViewModels
             this.CalendarGridViewModel.DisplayMode = DisplayMode.MonthMode;
 
             /// Load informations of grid with the selected month
-            var currentDateTime = DateTime.Now;
-            var newDateTime = new DateTime(obj.ClickedMonth.Year, obj.ClickedMonth.NumberMonth, currentDateTime.Day);
+            var newDateTime = DateTimeHelper.GetDateSwitchingToMonthMode(obj.ClickedMonth.Year, obj.ClickedMonth.NumberMonth, DateTime.Now.Day);
             this.CalendarGridViewModel.LoadGridModeMonth(newDateTime);
 
             /// Refresh displayed date

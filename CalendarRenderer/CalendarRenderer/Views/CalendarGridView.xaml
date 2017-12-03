@@ -6,7 +6,7 @@
              x:Class="CalendarRenderer.Views.CalendarGridView">
 
     <ContentView.Content>
-        <Grid>
+        <Grid RowSpacing="1" ColumnSpacing="1">
             <ListView HasUnevenRows="true"
                       ItemTemplate="{StaticResource Key=DataTemplateGridYear}" 
                       ItemsSource="{Binding Years}" IsVisible="False"

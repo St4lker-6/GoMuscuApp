@@ -17,16 +17,21 @@
     </ContentView.Style>
     
     <ContentView.Content>
-        <Grid RowSpacing="0">
+        <Grid BackgroundColor="Blue">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/> 
             </Grid.RowDefinitions>
 
             <Button Grid.Row="0" Grid.RowSpan="2" 
-                    BackgroundColor="Transparent" 
-                    Command="{Binding DayClickCommand}"
-                    HorizontalOptions="Fill"/>
+                    Style="{StaticResource gridButtonStyle}"
+                    Command="{Binding DayClickCommand}">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding IsCurrentDay}" Value="True">
+                        <Setter Property="Margin" Value="0"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
 
             <!--1, 2, 3, 4-->
             <Label Grid.Row="0" 

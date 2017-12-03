@@ -86,7 +86,7 @@ namespace CalendarRenderer.ViewModels
         {
             /// Set the month mode by default
             this.DisplayMode = DisplayMode.YearMode;
-
+            
             _eventAggregator = eventAggregator;
         }
 
