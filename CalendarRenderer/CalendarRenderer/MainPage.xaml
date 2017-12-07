@@ -5,7 +5,7 @@
              xmlns:views="clr-namespace:CalendarRenderer.Views"
              x:Class="CalendarRenderer.MainPage">
 
-    <Grid ColumnSpacing="1" RowSpacing="1">
+    <Grid ColumnSpacing="0" RowSpacing="1"> <!--Space between previous/next button and grid-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
@@ -14,7 +14,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
         <!-- ****** First row ******-->
@@ -26,9 +26,8 @@
                 Command="{Binding PreviousButtonCommand}"/>
 
         <!--Current date button-->
-        <Grid Grid.Row="0" Grid.Column="1" ColumnSpacing="1" RowSpacing="1">
+        <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -38,11 +37,9 @@
                 Command="{Binding CurrentButtonCommand}"/>
 
             <Label Grid.Row="0" 
-               Text="{Binding LabelUp}"
-               HorizontalOptions="Center" VerticalOptions="End"/>
-            <Label Grid.Row="1" 
-               Text="{Binding LabelDown}"
-               HorizontalOptions="Center" VerticalOptions="Start"/>
+                   Style="{StaticResource gridLabelStyle}"
+                   Text="{Binding DateLabel}"
+                   HorizontalOptions="Center" VerticalOptions="Center"/>
 
         </Grid>
 
@@ -54,7 +51,8 @@
         <!-- ************-->
 
         <!-- ****** Second Row ******-->
-        <views:CalendarGridView Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="3" BindingContext="{Binding CalendarGridViewModel}"/>
+        <views:CalendarGridView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" 
+                                BindingContext="{Binding CalendarGridViewModel}"/>
         <!-- ************-->
 
     </Grid>

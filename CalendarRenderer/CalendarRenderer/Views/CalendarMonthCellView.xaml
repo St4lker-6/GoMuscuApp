@@ -35,16 +35,17 @@
 
             <!--1, 2, 3, 4-->
             <Label Grid.Row="0" 
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="End" 
+                   Style="{StaticResource gridLabelStyle}"
+                   HorizontalTextAlignment="End"
+                   VerticalTextAlignment="Start" 
                    Text="{Binding NumberDay}"/>
 
 
             <!--Monday, tuesday, wednesday ...-->
-            <Label Grid.Row="1" 
-                   HorizontalTextAlignment="Center"
+            <!--<Label Grid.Row="0" 
+                   HorizontalTextAlignment="End"
                    VerticalTextAlignment="Start" 
-                   Text="{Binding NameDay}"/>
+                   Text="{Binding NameDay}"/>-->
 
         </Grid>
     </ContentView.Content>

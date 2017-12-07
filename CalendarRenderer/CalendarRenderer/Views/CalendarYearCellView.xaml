@@ -5,7 +5,7 @@
   <ContentView.Content>
 
         <Grid BackgroundColor="Blue">
-            <Button Style="{StaticResource gridButtonStyle}"
+            <Button Style="{StaticResource gridButtonStyle}" 
                     Command="{Binding MonthClickCommand}">
                 <Button.Triggers>
                     <DataTrigger TargetType="Button" Binding="{Binding IsCurrentMonth}" Value="True">
@@ -15,9 +15,8 @@
             </Button>
 
             <!--Month name-->
-            <Label 
-                   HorizontalTextAlignment="Center"  
-                   VerticalTextAlignment="Center"
+            <Label Style="{StaticResource gridLabelStyle}"
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                    Text="{Binding NameMonth}"/>
 
         </Grid>

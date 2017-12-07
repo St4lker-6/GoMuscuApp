@@ -24,20 +24,12 @@ namespace CalendarRenderer.ViewModels
 
         #region Properties
 
-        public string LabelUp
+        public string DateLabel
         {
 
             get
             {
-                return this.GetLabelUp();
-            }
-        }
-
-        public string LabelDown
-        {
-            get
-            {
-                return this.GetLabelDown();
+                return this.GetDateLabel();
             }
         }
 
@@ -103,15 +95,14 @@ namespace CalendarRenderer.ViewModels
         /// </summary>
         private void ActualizeDisplayedDate()
         {
-            this.NotifyPropertyChanged(nameof(this.LabelUp));
-            this.NotifyPropertyChanged(nameof(this.LabelDown));
+            this.NotifyPropertyChanged(nameof(this.DateLabel));
         }
 
         /// <summary>
         /// Get the displayed date information in function of the grid mode
         /// </summary>
         /// <returns></returns>
-        private string GetLabelUp()
+        private string GetDateLabel()
         {
             /// At the beginning of the app, the context may be null
             if (this.CalendarGridViewModel == null)
@@ -120,35 +111,10 @@ namespace CalendarRenderer.ViewModels
             switch (this.CalendarGridViewModel.DisplayMode)
             {
                 case DisplayMode.MonthMode:
-                    return this.CalendarDateTime.ToString(DateTimeHelper.yearFormat);
+                    return this.CalendarDateTime.ToString(DateTimeHelper.monthFormat) + " " + this.CalendarDateTime.ToString(DateTimeHelper.yearFormat);
 
                 case DisplayMode.YearMode:
                     return this.CalendarDateTime.ToString(DateTimeHelper.yearFormat);
-
-                default:
-                    throw new NotSupportedException();
-
-            }
-        }
-
-        /// <summary>
-        /// Get the displayed date information in function of the grid mode
-        /// </summary>
-        /// <returns></returns>
-        private string GetLabelDown()
-        {
-            /// At the beginning of the app, the context may be null
-            if (this.CalendarGridViewModel == null)
-                return string.Empty;
-
-            switch (this.CalendarGridViewModel.DisplayMode)
-            {
-                case DisplayMode.MonthMode:
-                    return this.CalendarDateTime.ToString(DateTimeHelper.monthFormat);
-
-                case DisplayMode.YearMode:
-                    return string.Empty;
-
 
                 default:
                     throw new NotSupportedException();

@@ -6,11 +6,11 @@
              x:Class="CalendarRenderer.Views.CalendarGridView">
 
     <ContentView.Content>
-        <Grid RowSpacing="1" ColumnSpacing="1">
+        <Grid>
             <ListView HasUnevenRows="true"
                       ItemTemplate="{StaticResource Key=DataTemplateGridYear}" 
                       ItemsSource="{Binding Years}" IsVisible="False"
-                      ItemSelected="ListViewItemSelected">
+                      ItemSelected="ListViewItemSelected" >
 
                 <!--Show the list view in function of the current grid mode*-->
                 <ListView.Triggers>
